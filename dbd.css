@@ -163,3 +163,14 @@ body.dbd-hatch-modal-open{overflow:hidden}
 .dbd-callout-fallback{font-size:12px;line-height:1.6;color:#bcb5ba;padding:12px 17px;background:#211a1e}
 .dbd-callout-fallback a{color:#ff7a84;text-decoration:underline}
 @media(max-width:750px){.dbd-callout-explain{padding:16px}.dbd-callout-atlas iframe{height:540px}.dbd-callout-current h3{font-size:22px}}
+
+/* Atlas zegarowy: pojedyncza grafika, bez osadzania całej strony */
+.dbd-callout-image-button{display:block;width:100%;padding:0;background:#17171d;border:1px solid #41363e;border-radius:12px;overflow:hidden;cursor:zoom-in;text-align:center;color:#eee}
+.dbd-callout-image-button img{display:block;width:100%;height:auto;max-height:680px;object-fit:contain;background:#25283c}
+.dbd-callout-image-button span{display:block;padding:11px 14px;background:#201c23;font-weight:750;font-size:13px}
+.dbd-callout-image-button:hover{border-color:#ff4054}
+.dbd-callout-pending{border:1px solid #473740;background:#231c22;border-radius:12px;padding:24px;line-height:1.6}
+.dbd-callout-pending p{color:#ccc}.dbd-callout-pending a{color:#ff7e8a;text-decoration:underline}
+.dbd-callout-lightbox{position:fixed;inset:0;background:rgba(0,0,0,.93);z-index:2147483600;display:flex;justify-content:center;align-items:center;padding:60px 18px 18px;cursor:zoom-out}
+.dbd-callout-lightbox img{display:block;max-width:95vw;max-height:88vh;object-fit:contain;box-shadow:0 10px 50px #000}
+.dbd-callout-close{position:absolute;right:25px;top:15px;border:1px solid #777;background:#262126;color:#fff;font-size:32px;border-radius:9px;width:46px;height:46px;cursor:pointer}
