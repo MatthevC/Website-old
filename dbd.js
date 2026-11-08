@@ -96,6 +96,54 @@ ${card('07 / Ciekawostki',`<div class="dbd-sub"><h3>Nostromo — Keycard (Karta 
 ${card('08 / System zegarowy — Callouts',`<p>Komunikacja „na zegar”: <b>12</b> oznacza górę mapy, <b>3</b> prawą stronę, <b>6</b> dół, a <b>9</b> lewą. Wybierz mapę i obracaj oznaczenia. Lista i tarcza działają <b>lokalnie, bez Supabase</b>.</p><div class="dbd-clock-tools"><label>Mapa <select id="dbd-map"></select></label><button id="dbd-rotate" type="button">↻ OBRÓĆ O 90°</button><button id="dbd-reset" type="button">RESET</button></div><div class="dbd-clock-layout"><div class="dbd-clock-face" id="dbd-clock-face"><div class="dbd-clock-ring" id="dbd-clock-ring"></div><span class="dbd-clock-center" id="dbd-clock-center">WYBIERZ MAPĘ</span></div><div class="dbd-clock-info"><h3 id="dbd-map-name">—</h3><p id="dbd-map-realm"></p><p>Przykład: „Killer na godzinie 2, blisko maina”. Orientację zegara ustalcie przed meczem, bo obrót mapy zmienia kierunki.</p><p class="dbd-note">To autorska, uproszczona tarcza do ćwiczenia calloutów, a nie kopia map graficznych Hensa. Nie pokazuje układu budynków ani spawnów.</p>${external('https://hens333.com/callouts','MAPY I UKŁADY HENSA')}</div></div>`,'dbd-clock')}
 ${card('09 / DBDQueue — kolejki w Europie',`<p>Sprawdź orientacyjne czasy oczekiwania na mecz dla <b>Frankfurtu (eu-central-1)</b> lub <b>Dublina (eu-west-1)</b>. Dane zależą od trybu, pory dnia i MMR.</p><div class="dbd-two"><div><h3>Frankfurt — EU Central</h3><p>Najczęściej przydatny region dla graczy w Polsce.</p></div><div><h3>Dublin — EU West</h3><p>Alternatywny region europejski.</p></div></div>${external('https://www.deadbyqueue.com/','SPRAWDŹ AKTUALNE KOLEJKI')}<p class="dbd-note">Przycisk otwiera aktualne dane na stronie dostawcy. Nie wyświetlamy niezweryfikowanych czasów jako „na żywo” i nie pobieramy danych bez udokumentowanego, dostępnego API.</p>`,'dbd-queue')}
 <footer class="dbd-guide-footer">MATT'S WORLD · PORADNIKI DBD · Materiał społecznościowy, niezwiązany oficjalnie z Behaviour Interactive.</footer></div>`;
+// Siedem kategorii: pokazujemy wyłącznie treści wybranej kategorii.
+const guideRoot=el.querySelector('.dbd-guide');
+const oldToc=guideRoot.querySelector('.dbd-toc');
+if(oldToc)oldToc.remove();
+const categories=[
+ {id:'perks',title:'Perki & addony',detail:'Buildy, perki i tier lista',icon:'✦',sections:['dbd-addons','dbd-perks']},
+ {id:'software',title:'Pomocnicze oprogramowanie',detail:'ReShade i NightLight',icon:'⚙',sections:['dbd-reshade','dbd-nightlight']},
+ {id:'bp',title:'Ile dostanę BP za daną rangę?',detail:'Nagrody i reset rang',icon:'◆',sections:['dbd-bp']},
+ {id:'hatch',title:'Hatch',detail:'Gdzie szukać włazu?',icon:'⌖',sections:['dbd-hatch']},
+ {id:'clock',title:'System zegarowy',detail:'Callouty i mapy',icon:'◷',sections:['dbd-clock']},
+ {id:'trivia',title:'Ciekawostki',detail:'Sekrety map DBD',icon:'✧',sections:['dbd-trivia']},
+ {id:'queue',title:'Kolejki w DBD',detail:'Sprawdź kolejki w Europie',icon:'☷',sections:['dbd-queue']}
+];
+const menu=document.createElement('nav');menu.className='dbd-category-menu';menu.setAttribute('aria-label','Kategorie poradnika Dead by Daylight');
+const content=document.createElement('div');content.className='dbd-category-content';content.hidden=true;
+const toolbar=document.createElement('div');toolbar.className='dbd-category-toolbar';
+const back=document.createElement('button');back.type='button';back.className='dbd-category-back';back.textContent='← WSZYSTKIE KATEGORIE';
+const currentTitle=document.createElement('h2');currentTitle.className='dbd-category-current';
+toolbar.append(back,currentTitle);content.append(toolbar);
+const panels=new Map([...guideRoot.querySelectorAll('.dbd-panel')].map(panel=>[panel.id,panel]));
+const groups=new Map();
+for(const category of categories){
+ const button=document.createElement('button');button.type='button';button.className='dbd-category-tile';button.setAttribute('aria-controls','dbd-category-'+category.id);
+ const icon=document.createElement('span');icon.className='dbd-category-icon';icon.setAttribute('aria-hidden','true');icon.textContent=category.icon;
+ const copy=document.createElement('span');copy.className='dbd-category-tile-copy';
+ const heading=document.createElement('strong');heading.textContent=category.title;
+ const detail=document.createElement('small');detail.textContent=category.detail;
+ const arrow=document.createElement('span');arrow.className='dbd-category-arrow';arrow.textContent='→';arrow.setAttribute('aria-hidden','true');
+ copy.append(heading,detail);button.append(icon,copy,arrow);menu.append(button);
+ const group=document.createElement('div');group.className='dbd-category-group';group.id='dbd-category-'+category.id;group.hidden=true;
+ category.sections.forEach(id=>{const panel=panels.get(id);if(panel)group.append(panel)});
+ content.append(group);groups.set(category.id,group);
+ button.addEventListener('click',()=>showCategory(category.id));
+}
+const footer=guideRoot.querySelector('.dbd-guide-footer');
+if(footer)guideRoot.insertBefore(menu,footer);else guideRoot.append(menu);
+if(footer)guideRoot.insertBefore(content,footer);else guideRoot.append(content);
+function showCategory(id){
+ const category=categories.find(item=>item.id===id);
+ menu.hidden=!!category;content.hidden=!category;
+ for(const [key,group] of groups)group.hidden=key!==id;
+ if(category){currentTitle.textContent=category.title;content.scrollIntoView({block:'start',behavior:'smooth'});}
+ else {menu.scrollIntoView({block:'start',behavior:'smooth'});}
+}
+back.addEventListener('click',()=>showCategory(null));
+// Umożliwiamy otwarcie konkretnej sekcji z odnośnika wewnętrznego.
+const requested=window.location.hash.match(/dbd-(?:addons|perks|reshade|nightlight|bp|hatch|clock|trivia|queue)/)?.[0];
+if(requested){const found=categories.find(category=>category.sections.includes(requested));if(found)showCategory(found.id)}
 const sel=$('#dbd-map'),ring=$('#dbd-clock-ring'); if(!sel||!ring)return;
 const all=Object.entries(maps).flatMap(([realm,names])=>names.map(name=>({realm,name})));
 all.forEach((m,i)=>{const o=document.createElement('option');o.value=String(i);o.textContent=`${m.realm} — ${m.name}`;sel.appendChild(o)});
