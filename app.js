@@ -3654,6 +3654,13 @@ async function render() {
   const [rawPath, rawQuery = ""] = raw.split("?");
   const path = rawPath.replace(/^\/+|\/+$/g, "") || "";
   const eventMatch = path.match(/^events\/(.+)$/);
+  if (path === "guides" || path === "guides/dbd") {
+    if (window.MattDBDGuide) window.MattDBDGuide.render(document.getElementById('app'));
+    document.title = "Poradniki — Dead by Daylight | MATT'S WORLD";
+    updateLinks(); closeMobileMenu();
+    document.documentElement.classList.remove("matt-route-loading");
+    return;
+  }
 
   // Supabase może odpowiadać równolegle z ładowaniem danych CMS.
   // Dzięki temu Eventy nie czekają najpierw na CMS, a dopiero potem na drugie zapytanie.
