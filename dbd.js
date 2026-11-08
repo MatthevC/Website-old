@@ -32,26 +32,26 @@ const perkLibrary={
  dejaVu:['Deja Vu','Déjà Vu','Ogólny','Pokazuje aury trzech generatorów tworzących tzw. trójgen i zapewnia niewielką premię do szybkości ich naprawy.'],
  kindred:['Kindred','Pokrewieństwo','Ogólny','Gdy ktoś wisi na haku, ujawnia aury ocalałych oraz killera w pobliżu haka.'],
  wellMakeIt:["We'll Make It",'Damy radę','Ogólny','Po zdjęciu ocalałego z haka przez pewien czas znacznie szybciej leczysz innych ocalałych.'],
- decisiveStrike:['Decisive Strike','Ostatnia szansa','Perk ogólny (wcześniej Laurie Strode)','Po zdjęciu z haka, jeśli killer ponownie Cię dopadnie i podniesie, możesz wyrwać się z jego chwytu dzięki trafionemu testowi umiejętności (skill check), o ile spełnione są warunki aktywacji perka.'],
+ decisiveStrike:['Decisive Strike','Ostateczny cios','Perk ogólny (wcześniej Laurie Strode)','Po zdjęciu z haka, jeśli killer ponownie Cię dopadnie i podniesie, możesz wyrwać się z jego chwytu dzięki trafionemu testowi umiejętności (skill check), o ile spełnione są warunki aktywacji perka.'],
  wereGonnaLiveForever:["We're Gonna Live Forever",'Będziemy żyć wiecznie','David King','Przyspiesza leczenie powalonych sojuszników i zapewnia im ochronę po podniesieniu.'],
  unbreakable:['Unbreakable','Niezłomny','Bill Overbeck','Przyspiesza podnoszenie się ze stanu umierania i pozwala raz samodzielnie wstać.'],
  borrowedTime:['Borrowed Time','Pożyczony czas','Bill Overbeck','Wydłuża ochronę i premię do prędkości uratowanego z haka ocalałego.'],
  deadHard:['Dead Hard','Hart ducha','David King','Po odhaczeniu umożliwia krótką ochronę przed ciosem, jeśli prawidłowo wyczujesz moment.'],
  adrenaline:['Adrenaline','Adrenalina','Meg Thomas','Po zasileniu bram zapewnia leczenie o jeden stan i krótki zastrzyk prędkości.'],
- windowsOfOpportunity:['Windows of Opportunity','Okna możliwości','Kate Denson','Pokazuje aury pobliskich okien i palet, dzięki czemu łatwiej zaplanować trasę ucieczki. Sam perk nie przyspiesza przeskoków.'],
- lithe:['Lithe','Zwinność','Feng Min','Zapewnia krótkie przyspieszenie po szybkim przeskoku przez okno lub paletę.'],
+ windowsOfOpportunity:['Windows of Opportunity','Ostatnia szansa','Kate Denson','Pokazuje aury pobliskich okien i palet, dzięki czemu łatwiej zaplanować trasę ucieczki. Sam perk nie przyspiesza przeskoków.'],
+ lithe:['Lithe','Gibkość','Feng Min','Zapewnia krótkie przyspieszenie po szybkim przeskoku przez okno lub paletę.'],
  finesse:['Finesse','Finezja','Lara Croft','Przy pełnym zdrowiu przyspiesza szybki przeskok, jeśli perk nie jest na odnowieniu. Nie nakłada statusu Exhausted (Wyczerpanie).'],
  alert:['Alert','Czujność','Feng Min','Pokazuje aurę killera, gdy niszczy paletę lub ścianę albo uszkadza generator.'],
  fiveMovesAhead:['Five Moves Ahead','Pięć ruchów naprzód','Kwon Tae-young','Pokazuje pobliskie palety i pomaga szybciej odzyskać kontrolę po przeskoczeniu palety.'],
  resurgence:['Resurgence','Odrodzenie','Jill Valentine','Po zdjęciu z haka otrzymujesz dużą część postępu leczenia, co znacznie ułatwia szybki powrót do gry.'],
- distortion:['Distortion','Zniekształcenie','Jeff Johansen','Pomaga ukrywać aurę przed umiejętnościami killera, zużywając dostępne żetony.'],
- lethalPursuer:['Lethal Pursuer','Zabójczy prześladowca','Nemesis','Na początku meczu pokazuje aury ocalałych i wydłuża inne efekty ujawniania aur.'],
+ distortion:['Distortion','Zakłócenie','Jeff Johansen','Pomaga ukrywać aurę przed umiejętnościami killera, zużywając dostępne żetony.'],
+ lethalPursuer:['Lethal Pursuer','Śmiertelny pościg','Nemesis','Na początku meczu pokazuje aury ocalałych i wydłuża inne efekty ujawniania aur.'],
  nowhereToHide:['Nowhere to Hide','Nie ma gdzie się ukryć','The Knight (Rycerz)','Po uszkodzeniu generatora pokazuje aury pobliskich ocalałych w zasięgu killera.'],
- scourgeHookPainResonance:['Scourge Hook: Pain Resonance','Hak Udręki: Rezonans bólu','The Artist (Artystka)','Pierwsze zawieszenie każdego ocalałego na haku plagi powoduje regres najbardziej zaawansowanego generatora.'],
- popGoesTheWeasel:['Pop Goes the Weasel','Łasica wyskakuje z norki','The Clown (Klaun)','Po zawieszeniu ocalałego pozwala mocniej cofnąć postęp generatora przy jego uszkodzeniu.']
+ scourgeHookPainResonance:['Scourge Hook: Pain Resonance','Hak plagi: rezonans bólu','The Artist (Artystka)','Pierwsze zawieszenie każdego ocalałego na haku plagi powoduje regres najbardziej zaawansowanego generatora.'],
+ popGoesTheWeasel:['Pop Goes the Weasel','Entliczek-pentliczek','The Clown (Klaun)','Po zawieszeniu ocalałego pozwala mocniej cofnąć postęp generatora przy jego uszkodzeniu.']
 };
 const buildPerks={starter:['dejaVu','kindred','wellMakeIt','decisiveStrike'],premium:['windowsOfOpportunity','lithe','finesse','alert'],killer:['lethalPursuer','nowhereToHide','scourgeHookPainResonance','popGoesTheWeasel']};
-function perkSources(id){const filename='IconPerks_'+id+'.png';const wiki='https://deadbydaylight.wiki.gg/wiki/Special:Redirect/file/'+encodeURIComponent(filename);return [wiki,'https://images.weserv.nl/?url='+encodeURIComponent(wiki)+'&w=256&output=png','https://deadbydaylight.fandom.com/wiki/Special:Redirect/file/'+encodeURIComponent(filename)];}
+function perkSources(id){if(id==='fiveMovesAhead')return ['pictures/dbd-perk-five-moves-ahead.png'];const filename='IconPerks_'+id+'.png';const wiki='https://deadbydaylight.wiki.gg/wiki/Special:Redirect/file/'+encodeURIComponent(filename);return [wiki,'https://images.weserv.nl/?url='+encodeURIComponent(wiki)+'&w=256&output=png','https://deadbydaylight.fandom.com/wiki/Special:Redirect/file/'+encodeURIComponent(filename)];}
 function perkCard(id){const [en,pl,owner,info]=perkLibrary[id];const sources=perkSources(id);return `<article class="dbd-perk-item"><a class="dbd-perk-image" href="https://deadbydaylight.wiki.gg/wiki/${encodeURIComponent(en.replaceAll(' ','_'))}" target="_blank" rel="noopener noreferrer" aria-label="Sprawdź ${en} na Wiki"><img loading="lazy" src="${sources[0]}" data-sources='${JSON.stringify(sources)}' data-source-index="0" alt="Ikona ${en}" referrerpolicy="no-referrer"><span class="dbd-perk-fallback" style="display:none">✦<small>${en}</small></span></a><div class="dbd-perk-copy"><strong>${en}</strong><span>(${pl})</span><span class="dbd-perk-owner">Od: ${owner}</span><small>${info}</small></div></article>`}
 function build(id,title,desc){return `<article class="dbd-build"><div class="dbd-build-head"><h4>${title}</h4><span>4 PERKI</span></div><div class="dbd-perk-set">${buildPerks[id].map(perkCard).join('')}</div><p class="dbd-build-summary">${desc}</p></article>`}
 function extraPerks(ids){return `<div class="dbd-perk-set dbd-perk-extras">${ids.map(perkCard).join('')}</div>`}
