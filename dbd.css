@@ -140,3 +140,26 @@ body.dbd-hatch-modal-open{overflow:hidden}
 .dbd-hatch-lightbox button:focus-visible{outline:3px solid #ff7180;outline-offset:3px}
 .dbd-hatch-lightbox button[hidden]{display:none}
 @media(max-width:650px){.dbd-hatch-lightbox{padding:58px 10px 24px;gap:5px}.dbd-hatch-lightbox-frame{max-width:calc(100vw - 100px)}.dbd-hatch-lightbox-prev,.dbd-hatch-lightbox-next{min-width:36px}.dbd-hatch-lightbox-img{max-height:calc(100dvh - 130px)}}
+
+/* MATT'S WORLD: atlas zegarowy */
+.dbd-callouts-v2{font-size:15px;color:#f5f5f7}
+.dbd-callout-explain{background:#19181c;border:1px solid #38343a;border-radius:13px;padding:20px 22px;margin:8px 0 24px;line-height:1.7}
+.dbd-callout-explain h3{margin:0 0 9px;color:#fff;font-size:22px}
+.dbd-callout-explain p{margin:0 0 12px}
+.dbd-callout-explain p:last-child{margin-bottom:0}
+.dbd-callout-legend{display:flex;flex-wrap:wrap;gap:9px;margin:14px 0}
+.dbd-callout-legend span{background:#291b20;border:1px solid #62404b;border-radius:8px;padding:10px 13px;font-size:13px}
+.dbd-callout-legend b{color:#ff606e;font-size:17px;margin-right:6px}
+.dbd-callout-label{display:block;color:#ff5965;font-weight:800;margin-bottom:8px}
+.dbd-callout-current{border-bottom:1px solid #40353c;padding-bottom:14px;margin-bottom:16px}
+.dbd-callout-current>span{color:#ff6b76;text-transform:uppercase;font-size:11px;letter-spacing:.1em;font-weight:800}
+.dbd-callout-current h3{font-size:26px;margin:5px 0 9px;color:white}
+.dbd-callout-current p{line-height:1.7;margin:0}
+.dbd-callout-atlas{border:1px solid #3e353b;background:#141316;border-radius:12px;overflow:hidden}
+.dbd-callout-atlas-heading{padding:14px 17px;display:flex;flex-direction:column;gap:4px}
+.dbd-callout-atlas-heading strong{font-size:17px;color:#fff}
+.dbd-callout-atlas-heading span{color:#b9b5b8;font-size:12px}
+.dbd-callout-atlas iframe{width:100%;height:650px;display:block;border:0;background:#101012}
+.dbd-callout-fallback{font-size:12px;line-height:1.6;color:#bcb5ba;padding:12px 17px;background:#211a1e}
+.dbd-callout-fallback a{color:#ff7a84;text-decoration:underline}
+@media(max-width:750px){.dbd-callout-explain{padding:16px}.dbd-callout-atlas iframe{height:540px}.dbd-callout-current h3{font-size:22px}}
