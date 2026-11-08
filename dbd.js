@@ -29,48 +29,33 @@ function external(url,label){return `<a class="dbd-button" target="_blank" rel="
 // Obrazy ładowane bezpośrednio z oficjalnej Wiki DBD (bez lokalnych kopii).
 // Wiki może zmienić sposób serwowania plików; wtedy obraz pokaże komunikat zastępczy.
 const perkLibrary={
- dejaVu:['Deja Vu','Déjà Vu','Pokazuje trzy blisko położone generatory i pomaga w ich naprawie.'],
- kindred:['Kindred','Pokrewieństwo','Ujawnia informacje o drużynie i zagrożeniu podczas zawieszenia na haku.'],
- sprintBurst:['Sprint Burst','Sprint','Zapewnia krótkie przyspieszenie po rozpoczęciu biegu.'],
- resilience:['Resilience','Odporność','Przyspiesza wiele czynności, gdy jesteś ranny.'],
- hope:['Hope','Nadzieja','Zwiększa prędkość poruszania się po zasileniu bram.'],
- wellMakeIt:["We'll Make It",'Damy radę','Pozwala szybciej leczyć innych po uratowaniu z haka.'],
- lightweight:['Lightweight','Lekki krok','Utrudnia killerowi śledzenie śladów biegu.'],
- darkSense:['Dark Sense','Mroczny zmysł','Pomaga zlokalizować killera w określonych sytuacjach.'],
- windowsOfOpportunity:['Windows of Opportunity','Okna możliwości','Pokazuje okna i palety w okolicy, ułatwiając planowanie pościgu.'],
- lithe:['Lithe','Zwinność','Daje krótkie przyspieszenie po szybkim przeskoku.'],
- finesse:['Finesse','Finezja','Ułatwia szybkie przeskoki, gdy spełnione są warunki perka.'],
- resurgence:['Resurgence','Odrodzenie','Zapewnia postęp leczenia po zdjęciu z haka.'],
- adrenaline:['Adrenaline','Adrenalina','Pomaga przetrwać moment uruchomienia bram.'],
- balancedLanding:['Balanced Landing','Miękkie lądowanie','Pomaga uciec po upadku z wysokości.'],
- quickAndQuiet:['Quick & Quiet','Cicho i szybko','Pozwala wykonać wybraną szybką akcję bez powiadomienia dźwiękowego.'],
- deadHard:['Dead Hard','Hart ducha','Umożliwia krótką obronę przed ciosem po spełnieniu warunków.'],
- corruptIntervention:['Corrupt Intervention','Zepsuta interwencja','Na początku meczu blokuje odległe generatory.'],
- scourgeHookPainResonance:['Scourge Hook: Pain Resonance','Hak Udręki: Rezonans bólu','Powoduje utratę postępu generatora po określonym zawieszeniu na haku udręki.'],
- grimEmbrace:['Grim Embrace','Ponury uścisk','Blokuje generatory po zawieszeniu różnych ocalałych.'],
- noWayOut:['No Way Out','Bez wyjścia','Opóźnia możliwość otwierania bram wyjściowych.'],
- decisiveStrike:['Decisive Strike','Ostatnia szansa','Pozwala spróbować uwolnić się po ponownym złapaniu w określonym czasie po odhaczeniu.']
+ dejaVu:['Deja Vu','Déjà Vu','Ogólny','Pokazuje aurę trzech najbliższych sobie generatorów i przyspiesza ich naprawę.'],
+ kindred:['Kindred','Pokrewieństwo','Ogólny','Gdy ktoś wisi na haku, ujawnia aury ocalałych oraz killera w pobliżu haka.'],
+ wellMakeIt:["We'll Make It",'Damy radę','Ogólny','Po uratowaniu ocalałego z haka znacznie przyspiesza leczenie innych.'],
+ decisiveStrike:['Decisive Strike','Ostatnia szansa','Laurie Strode','Po odhaczeniu pozwala oswobodzić się ze złapania przez killera po spełnieniu warunków antytunelowych.'],
+ wereGonnaLiveForever:["We're Gonna Live Forever",'Będziemy żyć wiecznie','David King','Przyspiesza leczenie powalonych sojuszników i wspiera ich ochronę po podniesieniu.'],
+ unbreakable:['Unbreakable','Niezłomny','Bill Overbeck','Przyspiesza podnoszenie się ze stanu umierania i pozwala raz samodzielnie wstać.'],
+ borrowedTime:['Borrowed Time','Pożyczony czas','Bill Overbeck','Wydłuża ochronę i premię do prędkości uratowanego z haka ocalałego.'],
+ deadHard:['Dead Hard','Hart ducha','David King','Po odhaczeniu umożliwia krótką ochronę przed ciosem, jeśli prawidłowo wyczujesz moment.'],
+ adrenaline:['Adrenaline','Adrenalina','Meg Thomas','Po zasileniu bram zapewnia leczenie o jeden stan i krótki zastrzyk prędkości.'],
+ windowsOfOpportunity:['Windows of Opportunity','Okna możliwości','Kate Denson','Pokazuje pobliskie okna i palety, ułatwiając planowanie ucieczki.'],
+ lithe:['Lithe','Zwinność','Feng Min','Zapewnia krótkie przyspieszenie po szybkim przeskoku przez okno lub paletę.'],
+ finesse:['Finesse','Finezja','Lara Croft','Przy pełnym zdrowiu przyspiesza szybki przeskok, gdy perk nie jest na odnowieniu.'],
+ alert:['Alert','Czujność','Feng Min','Pokazuje aurę killera, gdy niszczy paletę lub ścianę albo uszkadza generator.'],
+ fiveMovesAhead:['Five Moves Ahead','Pięć ruchów naprzód','Kwon Tae-young','Pomaga przewidywać trasę ucieczki dzięki informacjom o elementach otoczenia podczas pościgu.'],
+ resurgence:['Resurgence','Odrodzenie','Jill Valentine','Po odhaczeniu zapewnia część postępu leczenia, co ułatwia szybki powrót do gry.'],
+ distortion:['Distortion','Zniekształcenie','Jeff Johansen','Pomaga ukrywać aurę przed umiejętnościami killera, zużywając dostępne żetony.'],
+ lethalPursuer:['Lethal Pursuer','Zabójczy prześladowca','Nemesis','Na początku meczu pokazuje aury ocalałych i wydłuża inne efekty ujawniania aur.'],
+ nowhereToHide:['Nowhere to Hide','Nie ma gdzie się ukryć','The Knight (Rycerz)','Po uszkodzeniu generatora pokazuje aury pobliskich ocalałych w zasięgu killera.'],
+ scourgeHookPainResonance:['Scourge Hook: Pain Resonance','Hak Udręki: Rezonans bólu','The Artist (Artystka)','Pierwsze zawieszenie każdego ocalałego na haku udręki powoduje regres najbardziej zaawansowanego generatora.'],
+ popGoesTheWeasel:['Pop Goes the Weasel','Łasica wyskakuje z norki','The Clown (Klaun)','Po zawieszeniu ocalałego pozwala mocniej cofnąć postęp generatora przy jego uszkodzeniu.']
 };
-const buildPerks={
- 1:['dejaVu','kindred','sprintBurst','resilience'],
- 2:['dejaVu','wellMakeIt','hope','lightweight'],
- 3:['windowsOfOpportunity','lithe','finesse','resurgence'],
- 4:['windowsOfOpportunity','balancedLanding','quickAndQuiet','adrenaline'],
- 5:['finesse','resurgence','lithe','deadHard'],
- 6:['corruptIntervention','scourgeHookPainResonance','grimEmbrace','noWayOut']
-};
-// Kilka źródeł obrazu: bezpośrednia Wiki, proxy obrazu, zapasowa Wiki.
-// Zewnętrzne serwery mogą blokować hotlinki; w takim przypadku pokazujemy czytelny kafelek tekstowy.
-function perkSources(id){
- const filename='IconPerks_'+id+'.png';
- const wiki='https://deadbydaylight.wiki.gg/wiki/Special:Redirect/file/'+encodeURIComponent(filename);
- return [
-   'https://images.weserv.nl/?url='+encodeURIComponent(wiki)+'&w=256&output=png',
-   wiki,
-   'https://deadbydaylight.fandom.com/wiki/Special:Redirect/file/'+encodeURIComponent(filename)
- ];
-}
-function build(i,title,desc){return `<article class="dbd-build"><div class="dbd-build-head"><h4>${title}</h4><span>4 PERKI</span></div><div class="dbd-perk-set" role="group" aria-label="Cztery perki zestawu ${i}">${buildPerks[i].map(id=>{const [en,pl,info]=perkLibrary[id];const sources=perkSources(id);return `<div class="dbd-perk-item"><a class="dbd-perk-image" href="https://deadbydaylight.wiki.gg/wiki/${encodeURIComponent(en.replaceAll(' ','_'))}" target="_blank" rel="noopener noreferrer" title="${en} — ${info}"><img loading="lazy" src="${sources[0]}" data-sources='${JSON.stringify(sources)}' data-source-index="0" alt="${en} (${pl})" referrerpolicy="no-referrer"><span class="dbd-perk-fallback" style="display:none">✦<small>${en}</small></span></a><div class="dbd-perk-copy"><strong>${en}</strong><span>(${pl})</span><small>${info}</small></div></div>`}).join('')}</div><p class="dbd-build-summary">${desc}</p></article>`}
+const buildPerks={starter:['dejaVu','kindred','wellMakeIt','decisiveStrike'],premium:['windowsOfOpportunity','lithe','finesse','alert'],killer:['lethalPursuer','nowhereToHide','scourgeHookPainResonance','popGoesTheWeasel']};
+function perkSources(id){const filename='IconPerks_'+id+'.png';const wiki='https://deadbydaylight.wiki.gg/wiki/Special:Redirect/file/'+encodeURIComponent(filename);return [wiki,'https://images.weserv.nl/?url='+encodeURIComponent(wiki)+'&w=256&output=png','https://deadbydaylight.fandom.com/wiki/Special:Redirect/file/'+encodeURIComponent(filename)];}
+function perkCard(id){const [en,pl,owner,info]=perkLibrary[id];const sources=perkSources(id);return `<article class="dbd-perk-item"><a class="dbd-perk-image" href="https://deadbydaylight.wiki.gg/wiki/${encodeURIComponent(en.replaceAll(' ','_'))}" target="_blank" rel="noopener noreferrer" aria-label="Sprawdź ${en} na Wiki"><img loading="lazy" src="${sources[0]}" data-sources='${JSON.stringify(sources)}' data-source-index="0" alt="Ikona ${en}" referrerpolicy="no-referrer"><span class="dbd-perk-fallback" style="display:none">✦<small>${en}</small></span></a><div class="dbd-perk-copy"><strong>${en}</strong><span>(${pl})</span><span class="dbd-perk-owner">Od: ${owner}</span><small>${info}</small></div></article>`}
+function build(id,title,desc){return `<article class="dbd-build"><div class="dbd-build-head"><h4>${title}</h4><span>4 PERKI</span></div><div class="dbd-perk-set">${buildPerks[id].map(perkCard).join('')}</div><p class="dbd-build-summary">${desc}</p></article>`}
+function extraPerks(ids){return `<div class="dbd-perk-set dbd-perk-extras">${ids.map(perkCard).join('')}</div>`}
+function character(name,filename,perk){return `<article class="dbd-character"><div class="dbd-character-photo"><img src="pictures/${filename}" loading="lazy" alt="${name}"></div><div class="dbd-character-details"><strong>${name}</strong><small>${perk}</small></div></article>`}
 // Zamiast pustych obrazów próbujemy kolejnego adresu, a następnie pokazujemy nazwę.
 document.addEventListener('error',event=>{
  const img=event.target;
@@ -84,10 +69,10 @@ function render(el){if(!el)return;
 el.innerHTML=`<div class="container dbd-guide"><header class="dbd-hero"><span>PORADNIKI / DEAD BY DAYLIGHT</span><h1>PRZEŻYJ DŁUŻEJ.<br><em>GRAJ MĄDRZEJ.</em></h1><p>Buildy, perki, sekrety map, punkty krwi i komunikacja zegarowa. Przewodnik społeczności MATT'S WORLD.</p></header>
 <nav class="dbd-toc" aria-label="Spis treści"><a href="#dbd-addons">BUILDY</a><a href="#dbd-perks">PERKI</a><a href="#dbd-reshade">RESHade</a><a href="#dbd-nightlight">NIGHTLIGHT</a><a href="#dbd-bp">BP I RESET</a><a href="#dbd-hatch">HATCH</a><a href="#dbd-trivia">CIEKAWOSTKI</a><a href="#dbd-clock">SYSTEM ZEGAROWY</a><a href="#dbd-queue">DBDQUEUE</a></nav>
 ${card('01 / Polecane add-ony i buildy',`<p>Sprawdź aktualne zestawy i dodatki dla killerów i survivorów przygotowane przez Otzdarvę. Opisy i efekty add-onów zmieniają się z aktualizacjami gry, dlatego kierujemy do aktualizowanego źródła.</p>${external('https://otzdarva.com/','OTZDARVA — BUILDS & ADD-ONS')}`,'dbd-addons')}
-${card('02 / Jakie perki polecamy?',`<div class="dbd-sub"><h3>A. Nowy gracz — darmowe perki</h3><p>Dwa proponowane zestawy darmowych perków. Każdy perk ma osobną ikonę, nazwę angielską i polską oraz krótki opis działania.</p><div class="dbd-buildgrid">${build(1,'Zestaw startowy I','Do nauki map, orientacji i bezpiecznej gry.')}${build(2,'Zestaw startowy II','Alternatywny układ z darmowych perków.')}</div><div class="dbd-perknotes"><p><b>Deja Vu (Déjà Vu)</b> — ujawnia aurę trzech generatorów położonych blisko siebie i przyspiesza ich naprawę.</p><p><b>Kindred (Pokrewieństwo)</b> — gdy ktoś wisi na haku, pomaga drużynie ocenić sytuację dzięki aurze sojuszników i killera w pobliżu haka.</p><p><b>We'll Make It (Damy radę)</b> — po uratowaniu z haka znacznie szybciej leczysz innych.</p><p><b>Hope (Nadzieja)</b> — po uruchomieniu bram zyskujesz premię do prędkości ruchu.</p></div><p class="dbd-note">Gdy już nauczysz się, gdzie zwykle znajdują się generatory, warto rozważyć zamianę perka pomagającego je znajdować na <b>Decisive Strike (Ostatnia szansa, DS)</b> — perk Laurie Strode, który może pomóc wyrwać się killerowi po niedawnym odhaczeniu, pod określonymi warunkami. Nie jest darmowym perkiem ogólnym.</p></div>
-<div class="dbd-sub"><h3>B. Nowy gracz — z zakupionymi postaciami</h3><p>Postacie warte rozważenia: <b>Feng Min</b> (Lithe — Zwinność, Sprint Burst po przeskoku), <b>Lara Croft</b> (Finesse — Finezja, szybszy szybki przeskok w odpowiednich warunkach), <b>Kate Denson</b> (Windows of Opportunity — Okna możliwości, aury palet i okien), <b>Baek Kwon / Kwon Tae-young</b> — sprawdź nazwę postaci, bo „Kwon Tae-young” może odnosić się do innego bohatera — oraz <b>Jill Valentine</b> (Resurgence — Odrodzenie, postęp leczenia po odhaczeniu).</p><div class="dbd-buildgrid">${build(3,'Zestaw z postaciami — I','Mobilność, przeskoki i orientacja w terenie.')}${build(4,'Zestaw z postaciami — II','Wariant z perkami postaci do odblokowania.')}${build(5,'Zestaw z postaciami — III','Alternatywna kombinacja dla bardziej doświadczonych.')}</div><p class="dbd-note">To autorskie propozycje zestawów inspirowane Twoimi przykładami — nie są wiernym odtworzeniem wszystkich perków ze zrzutów ekranu. Ikony pobierane są z zewnętrznej Wiki.</p></div>
-<div class="dbd-sub"><h3>C. Tier lista perków</h3><p>Aktualne oceny i porównanie siły perków znajdziesz w DBD Builds.</p>${external('https://www.dbdbuilds.com/tiers','OTWÓRZ TIER LISTĘ')}</div>
-<div class="dbd-sub"><h3>D. Uniwersalne perki killera</h3>${build(6,'Przykładowy zestaw uniwersalny','Propozycja uniwersalnego zestawu. Dobór zależy od killera i aktualnego balansu.')}<p>Przydatne uniwersalne kierunki: <b>Scourge Hook: Pain Resonance (Hak Udręki: Rezonans Bólu)</b> — regres generatora po pierwszym zawieszeniu unikalnego survivora na haku udręki; <b>Corrupt Intervention (Zepsuta Interwencja)</b> — blokuje odległe generatory na początku meczu; <b>Grim Embrace (Ponury Uścisk)</b> — okresowo blokuje generatory za haczenie różnych ocalałych; <b>No Way Out (Bez Wyjścia)</b> — opóźnia otwieranie bram po zakończeniu generatorów.</p></div>`,'dbd-perks')}
+${card('02 / Jakie perki polecamy?',`<div class="dbd-sub"><div class="dbd-section-label">01 / DLA POCZĄTKUJĄCYCH</div><h3>Startowy zestaw perków</h3><p>Na początek polecamy cztery perki, które pomogą Ci zrozumieć generatory, ratowanie drużyny i bezpieczną grę. <b>Decisive Strike</b> wymaga Laurie Strode — nie jest darmowym perkiem.</p>${build('starter','Zestaw startowy','Jeżeli nie masz Laurie Strode, korzystaj na początku z trzech ogólnych perków i dobierz czwarty dostępny perk.')}<h4 class="dbd-mini-heading">Alternatywne polecane perki</h4>${extraPerks(['wereGonnaLiveForever','unbreakable','borrowedTime','deadHard','adrenaline'])}<p class="dbd-note"><b>Dead Hard</b> warto wybrać dopiero wtedy, gdy nauczysz się odpowiednio wyczuwać ataki killera.</p></div>
+<div class="dbd-sub"><div class="dbd-section-label">02 / ROZBUDOWA KONTA</div><h3>Jakie postacie kupić pod perki?</h3><p><b>Na sam start</b> polecamy trzy postacie: Feng Min, Larę Croft i Kate Denson. Następnie możesz rozważyć Kwon Tae-younga, Jill Valentine i Jeffa Johansena.</p><h4 class="dbd-mini-heading">Kup na początek</h4><div class="dbd-character-grid">${character('Feng Min','dbd-character-feng.png','Lithe · Alert')}${character('Lara Croft','dbd-character-lara.png','Finesse')}${character('Kate Denson','dbd-character-kate.png','Windows of Opportunity')}</div><h4 class="dbd-mini-heading">W dalszej kolejności</h4><div class="dbd-character-grid">${character('Kwon Tae-young','dbd-character-kwon.png','Five Moves Ahead')}${character('Jill Valentine','dbd-character-jill.png','Resurgence')}${character('Jeff Johansen','dbd-character-jeff.png','Distortion')}</div>${build('premium','Zestaw startowy premium','Mobilność, orientacja podczas pościgu i lepsza kontrola sytuacji.')}<h4 class="dbd-mini-heading">Alternatywne perki z kolejnych postaci</h4>${extraPerks(['fiveMovesAhead','resurgence','distortion'])}</div>
+<div class="dbd-sub"><div class="dbd-section-label">03 / CO DALEJ?</div><h3>Znajdź swój własny build</h3><p>To propozycje przede wszystkim dla nowych graczy. Warto testować również inne perki i dobrać zestaw do własnego stylu gry. Gdy opanujesz podstawy, sięgnij po bardziej zaawansowane kombinacje — celowo nie opisujemy ich wszystkich na początku.</p>${external('https://www.dbdbuilds.com/tiers','ZOBACZ TIER LISTĘ PERKÓW')}</div>
+<div class="dbd-sub"><div class="dbd-section-label">04 / KILLER</div><h3>Uniwersalne perki dla killera</h3>${build('killer','Zestaw uniwersalny killera','Informacje o ocalałych i spowalnianie generatorów.')}<p class="dbd-note">Są to perki uniwersalne, a nie zestaw przygotowany pod konkretnego killera. Nie zawsze będą najlepszym wyborem, ale warto je odblokować i wypróbować, szczególnie na początku.</p></div>`,'dbd-perks')}
 ${card('03 / ReShade',`<p>Instrukcja instalacji i konfiguracji — <b>w przygotowaniu</b>. Dostępne już pliki konfiguracyjne możesz znaleźć w sekcji „Do pobrania”.</p><a class="dbd-button" href="#/viewer/downloads">DO POBRANIA →</a>`,'dbd-reshade')}
 ${card('04 / NightLight',`<p>Instrukcja obsługi NightLight — <b>w przygotowaniu</b>. Dodamy tu konfigurację, statystyki i przykłady zastosowania.</p>`,'dbd-nightlight')}
 ${card('05 / Ile BP za rangę i kiedy reset?',`<p>Reset rangi następuje <b>13. dnia każdego miesiąca</b>. Nagrody za osiągniętą rangę są przyznawane oddzielnie dla survivora i killera.</p><div class="dbd-bp-img"><img src="pictures/dbd-bp-ranks.webp" loading="lazy" alt="Tabela nagród BP za rangi: I–IV, od Iridescent do Ash"></div><p class="dbd-note">Tabela z Twojego screena przedstawia nagrody w BP. Iridescent I: 1 000 000 BP, Gold I: 550 000 BP, Silver I: 340 000 BP, Bronze I: 175 000 BP, Ash I: 50 000 BP.</p>`,'dbd-bp')}
