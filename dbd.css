@@ -86,3 +86,39 @@
 .dbd-character-details small{font-size:12px;color:#f18995}
 @media(max-width:720px){.dbd-character-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.dbd-character-photo{height:185px}}
 @media(max-width:420px){.dbd-character-grid{gap:8px}.dbd-character-photo{height:155px}.dbd-character-details strong{font-size:14px}.dbd-guide .dbd-perk-extras{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+
+/* Hatch locator — compact in-match guide */
+.dbd-hatch-tool{color:#f4f4f6;font-size:15px}
+.dbd-hatch-intro{border:1px solid #383039;background:#1b191d;border-radius:12px;padding:16px 20px;line-height:1.7;margin:14px 0 22px}
+.dbd-hatch-intro p{margin:0 0 10px}.dbd-hatch-intro p:last-child{margin:0}
+.dbd-hatch-search-label{display:block;color:#ff525c;font-weight:800;letter-spacing:.04em;margin:0 0 8px}
+.dbd-hatch-search{box-sizing:border-box;width:100%;background:#111114;border:1px solid #504149;color:#fff;padding:14px 16px;border-radius:10px;font:inherit;outline:none;margin-bottom:18px}
+.dbd-hatch-search:focus{border-color:#f23846;box-shadow:0 0 0 2px #f2384622}
+.dbd-hatch-layout{display:grid;grid-template-columns:minmax(180px,230px) minmax(0,1fr);gap:18px;align-items:start}
+.dbd-hatch-realms{display:flex;flex-direction:column;gap:6px;max-height:670px;overflow-y:auto;padding-right:5px;position:sticky;top:12px}
+.dbd-hatch-realms button,.dbd-hatch-map-tabs button{font:inherit;cursor:pointer;color:#ddd;background:#19181c;border:1px solid #38343b;border-radius:8px;text-align:left;padding:10px 12px;transition:background .12s,border-color .12s}
+.dbd-hatch-realms button{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:13px;font-weight:700}
+.dbd-hatch-realms button small{white-space:nowrap;color:#999;font-size:10px;font-weight:500}
+.dbd-hatch-realms button:hover,.dbd-hatch-map-tabs button:hover{background:#312027}
+.dbd-hatch-realms button.active,.dbd-hatch-map-tabs button.active{border-color:#ec303e;background:linear-gradient(100deg,#4c1922,#24171b);color:#fff}
+.dbd-hatch-main{min-width:0}
+.dbd-hatch-map-tabs{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:18px}
+.dbd-hatch-map-tabs button{font-size:13px;font-weight:750}
+.dbd-hatch-result-heading{border-bottom:1px solid #3b3439;margin:0 0 20px;padding-bottom:13px}
+.dbd-hatch-result-heading span{color:#f24b58;font-size:11px;letter-spacing:.11em;text-transform:uppercase;font-weight:800}
+.dbd-hatch-result-heading h3{font-size:24px;margin:5px 0 0;color:#fff}
+.dbd-hatch-place{margin:0 0 25px}
+.dbd-hatch-place h4{display:flex;align-items:center;gap:12px;margin:0 0 12px;color:#fff;font-size:17px}
+.dbd-hatch-place h4 span{font-size:11px;background:#34232a;border:1px solid #63414b;color:#ff9ca3;padding:4px 8px;border-radius:99px}
+.dbd-hatch-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:12px}
+.dbd-hatch-shot{margin:0;border:1px solid #39343b;border-radius:10px;background:#17171a;overflow:hidden}
+.dbd-hatch-shot a{display:block;aspect-ratio:16/9;background:#262329}
+.dbd-hatch-shot img{display:block;width:100%;height:100%;object-fit:cover}
+.dbd-hatch-shot figcaption{padding:10px 12px;color:#ddd;font-size:12px;font-weight:700}
+.dbd-hatch-img-error a{display:none}
+.dbd-hatch-img-error:before{content:"Zdjęcie chwilowo niedostępne — sprawdź źródło poniżej";display:block;padding:22px;color:#ccc;font-size:13px}
+.dbd-hatch-empty,.dbd-hatch-note{background:#251c21;border-left:3px solid #f04452;padding:18px;border-radius:7px;line-height:1.6}
+.dbd-hatch-source{margin:22px 0 0;color:#aaa;font-size:12px;line-height:1.7}
+.dbd-hatch-source a{color:#ff7781;text-decoration:underline}
+@media(max-width:750px){.dbd-hatch-layout{grid-template-columns:1fr}.dbd-hatch-realms{position:static;max-height:none;flex-direction:row;overflow-x:auto;padding-bottom:8px}.dbd-hatch-realms button{flex:0 0 auto;min-width:135px}.dbd-hatch-gallery{grid-template-columns:1fr}.dbd-hatch-result-heading h3{font-size:21px}}
