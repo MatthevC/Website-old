@@ -122,3 +122,21 @@
 .dbd-hatch-source{margin:22px 0 0;color:#aaa;font-size:12px;line-height:1.7}
 .dbd-hatch-source a{color:#ff7781;text-decoration:underline}
 @media(max-width:750px){.dbd-hatch-layout{grid-template-columns:1fr}.dbd-hatch-realms{position:static;max-height:none;flex-direction:row;overflow-x:auto;padding-bottom:8px}.dbd-hatch-realms button{flex:0 0 auto;min-width:135px}.dbd-hatch-gallery{grid-template-columns:1fr}.dbd-hatch-result-heading h3{font-size:21px}}
+
+/* Hatch: full-screen in-page image preview */
+.dbd-hatch-image-trigger{display:block;width:100%;height:100%;padding:0;border:0;background:#262329;cursor:zoom-in;aspect-ratio:16/9}
+.dbd-hatch-image-trigger:focus-visible{outline:3px solid #ff4a58;outline-offset:-3px}
+.dbd-hatch-image-trigger img{width:100%;height:100%;object-fit:cover;display:block}
+.dbd-hatch-img-error .dbd-hatch-image-trigger{display:none}
+body.dbd-hatch-modal-open{overflow:hidden}
+.dbd-hatch-lightbox[hidden]{display:none!important}
+.dbd-hatch-lightbox{position:fixed;inset:0;z-index:2147483647;display:flex;align-items:center;justify-content:center;gap:12px;padding:48px 24px;background:rgba(0,0,0,.92);backdrop-filter:blur(8px);box-sizing:border-box}
+.dbd-hatch-lightbox-frame{min-width:0;max-width:min(1100px,85vw);display:flex;flex-direction:column;align-items:center;gap:14px}
+.dbd-hatch-lightbox-img{max-width:100%;max-height:calc(100dvh - 155px);object-fit:contain;border-radius:8px;box-shadow:0 16px 70px #0009}
+.dbd-hatch-lightbox-caption{color:#f5f5f5;text-align:center;font-size:14px;font-weight:650}
+.dbd-hatch-lightbox-close,.dbd-hatch-lightbox-prev,.dbd-hatch-lightbox-next{flex:0 0 auto;background:#251d22;color:#fff;border:1px solid #76515a;border-radius:10px;cursor:pointer;min-width:42px;min-height:44px;font-size:28px;line-height:1}
+.dbd-hatch-lightbox-close{position:absolute;top:18px;right:20px;font-size:30px}
+.dbd-hatch-lightbox button:hover{background:#b9293b}
+.dbd-hatch-lightbox button:focus-visible{outline:3px solid #ff7180;outline-offset:3px}
+.dbd-hatch-lightbox button[hidden]{display:none}
+@media(max-width:650px){.dbd-hatch-lightbox{padding:58px 10px 24px;gap:5px}.dbd-hatch-lightbox-frame{max-width:calc(100vw - 100px)}.dbd-hatch-lightbox-prev,.dbd-hatch-lightbox-next{min-width:36px}.dbd-hatch-lightbox-img{max-height:calc(100dvh - 130px)}}
