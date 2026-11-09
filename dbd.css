@@ -260,3 +260,9 @@ body.dbd-hatch-modal-open{overflow:hidden}
 /* Midwich — ostrzeżenia w poradniku */
 .dbd-midwich-warning{border:1px solid rgba(255,120,70,.5);background:rgba(100,35,25,.15);border-radius:12px;padding:16px 20px;margin:18px 0 24px;line-height:1.65}
 .dbd-midwich-warning strong{color:#ffb49b}.dbd-midwich-warning p{margin:8px 0}
+
+/* Czytelny dwuwierszowy naglowek poradnika DBD */
+.dbd-hero .dbd-hero-title{display:flex;flex-direction:column;align-items:flex-start;gap:7px;margin:18px 0 0;font-size:clamp(25px,4.2vw,54px);line-height:1.12;letter-spacing:.01em;}
+.dbd-hero .dbd-hero-title span{color:#fff;font-weight:850;}
+.dbd-hero .dbd-hero-title strong{color:#ff536f;font-weight:900;}
+@media(max-width:600px){.dbd-hero .dbd-hero-title{font-size:clamp(22px,6.4vw,35px);overflow-wrap:anywhere;}}
