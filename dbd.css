@@ -256,3 +256,7 @@ body.dbd-hatch-modal-open{overflow:hidden}
 .dbd-nostromo-code span{display:grid;place-items:center;width:62px;height:62px;background:#281a20;border:1px solid #aa4057;border-radius:12px;color:#ff667c;font-size:34px;font-weight:900}
 @media(max-width:720px){.dbd-nostromo-gallery{grid-template-columns:repeat(2,minmax(0,1fr));grid-column:1/-1}.dbd-nostromo-step:has(.dbd-nostromo-gallery) .dbd-rs-step-copy{grid-column:2}.dbd-nostromo-gallery .dbd-rs-shot img{height:145px}}
 @media(max-width:440px){.dbd-nostromo-gallery{grid-template-columns:1fr 1fr}.dbd-nostromo-code span{width:52px;height:52px}}
+
+/* Midwich — ostrzeżenia w poradniku */
+.dbd-midwich-warning{border:1px solid rgba(255,120,70,.5);background:rgba(100,35,25,.15);border-radius:12px;padding:16px 20px;margin:18px 0 24px;line-height:1.65}
+.dbd-midwich-warning strong{color:#ffb49b}.dbd-midwich-warning p{margin:8px 0}
