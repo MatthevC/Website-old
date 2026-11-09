@@ -235,3 +235,6 @@ body.dbd-hatch-modal-open{overflow:hidden}
 .dbd-rs-step:has(.dbd-rs-shots-two){grid-template-columns:54px minmax(0,1fr) minmax(290px,420px)}
 @media(max-width:900px){.dbd-rs-step:has(.dbd-rs-shots-two){grid-template-columns:46px minmax(0,1fr)}.dbd-rs-shots{grid-column:2}.dbd-rs-shots-two .dbd-rs-shot img{height:220px}}
 @media(max-width:420px){.dbd-rs-shots{grid-column:1}.dbd-rs-shots-two .dbd-rs-shot img{height:150px}}
+
+/* Zapewnia ukrywanie nieaktywnej zakładki ReShade/NightLight */
+.dbd-category-group .dbd-panel[hidden]{display:none!important}
