@@ -236,5 +236,11 @@ body.dbd-hatch-modal-open{overflow:hidden}
 @media(max-width:900px){.dbd-rs-step:has(.dbd-rs-shots-two){grid-template-columns:46px minmax(0,1fr)}.dbd-rs-shots{grid-column:2}.dbd-rs-shots-two .dbd-rs-shot img{height:220px}}
 @media(max-width:420px){.dbd-rs-shots{grid-column:1}.dbd-rs-shots-two .dbd-rs-shot img{height:150px}}
 
-/* Zapewnia ukrywanie nieaktywnej zakładki ReShade/NightLight */
-.dbd-category-group .dbd-panel[hidden]{display:none!important}
+/* RPD hatch maps — same visual language as the existing hatch gallery */
+.dbd-rpd-intro{background:rgba(205,46,72,.07);border:1px solid rgba(224,66,92,.22);border-radius:12px;padding:15px 17px;margin:14px 0 18px}
+.dbd-rpd-intro strong{color:#f3f3f5;font-size:15px}.dbd-rpd-intro p{margin:8px 0 0;line-height:1.65;color:#bfc0c9;font-size:13px}
+.dbd-rpd-place{margin-top:20px}.dbd-rpd-description{font-size:13px;color:#b9bac5;margin:8px 0 12px}
+.dbd-rpd-map{max-width:680px;margin:0}.dbd-rpd-map .dbd-hatch-image-trigger{width:100%;display:block}.dbd-rpd-map img{display:block;width:100%;height:auto;object-fit:contain;background:#696969;border-radius:9px}
+.dbd-rpd-probability,.dbd-rpd-exception{margin:12px 0 4px;padding:11px 13px;border-radius:9px;font-size:13px;line-height:1.6;background:#1b1b21;border:1px solid #34343c;color:#d1d1d8}
+.dbd-rpd-probability b{color:#f16c83}.dbd-rpd-exception{border-color:rgba(235,174,76,.4);color:#e2c994}
+.dbd-rpd-source{font-size:12px;color:#a4a4ad;margin-top:20px}.dbd-rpd-source a{color:#f16c83}

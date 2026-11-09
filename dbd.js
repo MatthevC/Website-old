@@ -75,6 +75,17 @@ function hatchImage(n,kind,mapName,i){
 function hatchGallery(indices,kind,name){
  return `<section class="dbd-hatch-place"><h4>${kind} <span>${indices.length ? indices.length+' '+(indices.length===1?'lokalizacja':'lokalizacje') : 'brak punktu z oferty'}</span></h4>${indices.length?`<div class="dbd-hatch-gallery">${indices.map((n,i)=>hatchImage(n,kind,name,i)).join('')}</div>`:'<p>Na tej mapie nie ma wskazanego miejsca powiązanego z tą ofertą.</p>'}</section>`;
 }
+function rpdHatchGuide(mapName){
+ const wing=mapName==='RPD East Wing'?'east':'west';
+ const wingLabel=wing==='east'?'Skrzydło wschodnie':'Skrzydło zachodnie';
+ const variants=[['shack','Killer Shack','Ofiarowanie na właz przy chatce'],['main','Main Building','Ofiarowanie na właz przy głównym budynku']];
+ return `<div class="dbd-rpd-intro"><strong>${wingLabel} · Raccoon City Police Station</strong><p>Na planach literami oznaczono możliwe miejsca pojawienia się włazu. W standardowym układzie każde z trzech miejsc ma około <b>33% szans</b> na pojawienie się Hatcha. Ofiarowanie nie gwarantuje konkretnej lokalizacji.</p></div>${variants.map(([key,title,desc])=>{
+ const src=`pictures/dbd-hatch-rpd-${wing}-${key}.webp`;
+ const caption=`${wingLabel} — ${title}`;
+ const note=wing==='west'&&key==='shack'?'<p class="dbd-rpd-exception">Uwaga: w tym wariancie występują również dwa dodatkowe, rzadsze punkty. Informacja o 33% nie dotyczy wszystkich oznaczeń tej mapy.</p>':'<p class="dbd-rpd-probability">Każde z trzech oznaczonych miejsc: około <b>33% szans</b> na pojawienie się włazu.</p>';
+ return `<section class="dbd-hatch-place dbd-rpd-place"><h4>${title} <span>Mapa lokalizacji</span></h4><p class="dbd-rpd-description">${desc}</p><figure class="dbd-hatch-shot dbd-rpd-map"><button type="button" class="dbd-hatch-image-trigger" data-hatch-preview="${src}" data-hatch-caption="${caption}" aria-label="Powiększ mapę: ${caption}"><img src="${src}" loading="lazy" alt="Mapa ${caption} z zaznaczonymi punktami A, B, C${wing==='west'&&key==='shack'?', D, E':''}"></button><figcaption>Kliknij mapę, aby powiększyć</figcaption></figure>${note}</section>`;
+ }).join('')}<p class="dbd-rpd-source">Źródło map i oznaczeń: <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3469462028" target="_blank" rel="noopener noreferrer">poradnik społeczności Steam</a>.</p>`;
+}
 function hatchGuide(){
  return `<div class="dbd-hatch-tool">
  <div class="dbd-hatch-intro"><p>Wybierz krainę i mapę, aby zobaczyć <b>miejsca powiązane z ofertami na Hatch</b> przy <b>Main Building</b> i <b>Killer Shack</b>. Zdjęcia pokazują otoczenie konkretnego punktu — kliknij je, aby powiększyć.</p><p><b>Uwaga:</b> są to punkty dla ofert wpływających na pojawienie się Hatcha, a nie gwarantowane miejsca w każdym meczu. Mapa może mieć kilka wariantów lokalizacji. Na mapach bez punktów z ofertą Hatch nadal może pojawić się losowo.</p></div>
@@ -105,7 +116,7 @@ function initHatchGuide(root){
   if(!map){map=realm.maps[0];selectedMap=map.name}
   realmEl.innerHTML=filtered.map(r=>`<button type="button" class="${r.realm===selectedRealm?'active':''}" data-hatch-realm="${r.realm}">${r.realm}<small>${r.maps.length} map</small></button>`).join('');
   tabs.innerHTML=realm.maps.map(m=>`<button type="button" class="${m.name===selectedMap?'active':''}" data-hatch-map="${m.name}">${m.name}</button>`).join('');
-  results.innerHTML=`<div class="dbd-hatch-result-heading"><span>${realm.realm}</span><h3>${map.name}</h3></div>${map.shack.length+map.main.length?hatchGallery(map.shack,'Killer Shack',map.name)+hatchGallery(map.main,'Main Building',map.name):'<div class="dbd-hatch-empty">Ta mapa nie ma ustalonych punktów Hatcha powiązanych z ofertami. Nie oznacza to, że Hatch nie pojawi się w meczu.</div>'}${realm.realm==='Raccoon City Police Department'?'<p class="dbd-hatch-note">RPD ma wyjątkowe zachowanie ofert Hatcha; szczegóły sprawdź w źródle.</p>':''}`;
+  results.innerHTML=`<div class="dbd-hatch-result-heading"><span>${realm.realm}</span><h3>${map.name}</h3></div>${realm.realm==='Raccoon City Police Department'?rpdHatchGuide(map.name):map.shack.length+map.main.length?hatchGallery(map.shack,'Killer Shack',map.name)+hatchGallery(map.main,'Main Building',map.name):'<div class="dbd-hatch-empty">Ta mapa nie ma ustalonych punktów Hatcha powiązanych z ofertami. Nie oznacza to, że Hatch nie pojawi się w meczu.</div>'}`;
  }
  realmEl.addEventListener('click',e=>{const b=e.target.closest('[data-hatch-realm]');if(!b)return;selectedRealm=b.dataset.hatchRealm;selectedMap='';display()});
  tabs.addEventListener('click',e=>{const b=e.target.closest('[data-hatch-map]');if(!b)return;selectedMap=b.dataset.hatchMap;display()});
