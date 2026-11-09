@@ -3654,6 +3654,13 @@ async function render() {
   const [rawPath, rawQuery = ""] = raw.split("?");
   const path = rawPath.replace(/^\/+|\/+$/g, "") || "";
   const eventMatch = path.match(/^events\/(.+)$/);
+  if (path === "guides/phasmophobia") {
+    if (window.MattPhasmoGuide) window.MattPhasmoGuide.render(document.getElementById('app'));
+    document.title = "Poradniki — Phasmophobia | MATT'S WORLD";
+    updateLinks(); closeMobileMenu();
+    document.documentElement.classList.remove("matt-route-loading");
+    return;
+  }
   if (path === "guides" || path === "guides/dbd") {
     if (window.MattDBDGuide) window.MattDBDGuide.render(document.getElementById('app'));
     document.title = "Poradniki — Dead by Daylight | MATT'S WORLD";
