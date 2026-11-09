@@ -189,8 +189,7 @@ const categories=[
  {id:'bp',title:'Nagrody za wbitą rangę',detail:'Nagrody i reset rang',icon:'◆',sections:['dbd-bp']},
  {id:'hatch',title:'Hatch',detail:'Gdzie szukać włazu?',icon:'⌖',sections:['dbd-hatch']},
  {id:'clock',title:'System zegarowy',detail:'Callouty i mapy',icon:'◷',sections:['dbd-clock']},
- {id:'trivia',title:'Ciekawostki',detail:'Sekrety map DBD',icon:'✧',sections:['dbd-trivia-nostromo','dbd-trivia-midwich']},
- {id:'queue',title:'Kolejki w DBD',detail:'Sprawdź kolejki w Europie',icon:'☷',sections:['dbd-queue']}
+ {id:'trivia',title:'Ciekawostki',detail:'Sekrety map DBD',icon:'✧',sections:['dbd-trivia-nostromo','dbd-trivia-midwich']}
 ];
 const menu=document.createElement('nav');menu.className='dbd-category-menu';menu.setAttribute('aria-label','Kategorie poradnika Dead by Daylight');
 const content=document.createElement('div');content.className='dbd-category-content';content.hidden=true;
