@@ -226,3 +226,12 @@ body.dbd-hatch-modal-open{overflow:hidden}
 .dbd-rs-lightbox button{position:absolute;top:15px;right:22px;border:1px solid #aaa;background:#252127;color:white;border-radius:9px;width:46px;height:46px;font-size:30px;cursor:pointer}
 @media(max-width:780px){.dbd-rs-step{grid-template-columns:46px minmax(0,1fr);gap:12px;padding:15px}.dbd-rs-shot{grid-column:2}.dbd-rs-shot img{max-height:260px}.dbd-rs-intro{padding:19px}}
 @media(max-width:420px){.dbd-rs-step{grid-template-columns:1fr}.dbd-rs-index{grid-column:1}.dbd-rs-shot{grid-column:1}}
+
+/* ReShade — image gallery updates */
+.dbd-rs-shots{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;align-self:start;min-width:0}
+.dbd-rs-shots-two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.dbd-rs-shots .dbd-rs-shot{width:100%;min-width:0}
+.dbd-rs-shots .dbd-rs-shot img{width:100%;height:170px;max-height:none;object-fit:contain;background:#111116}
+.dbd-rs-step:has(.dbd-rs-shots-two){grid-template-columns:54px minmax(0,1fr) minmax(290px,420px)}
+@media(max-width:900px){.dbd-rs-step:has(.dbd-rs-shots-two){grid-template-columns:46px minmax(0,1fr)}.dbd-rs-shots{grid-column:2}.dbd-rs-shots-two .dbd-rs-shot img{height:220px}}
+@media(max-width:420px){.dbd-rs-shots{grid-column:1}.dbd-rs-shots-two .dbd-rs-shot img{height:150px}}
