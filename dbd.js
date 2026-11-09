@@ -82,7 +82,7 @@ function rpdHatchGuide(mapName){
  return `<div class="dbd-rpd-intro"><strong>${wingLabel} · Raccoon City Police Station</strong><p>Na planach literami oznaczono możliwe miejsca pojawienia się włazu. W standardowym układzie każde z trzech miejsc ma około <b>33% szans</b> na pojawienie się Hatcha. Ofiarowanie nie gwarantuje konkretnej lokalizacji.</p></div>${variants.map(([key,title,desc])=>{
  const src=`pictures/dbd-hatch-rpd-${wing}-${key}.webp`;
  const caption=`${wingLabel} — ${title}`;
- const note=wing==='west'&&key==='shack'?'<p class="dbd-rpd-exception">Uwaga: w tym wariancie występują również dwa dodatkowe, rzadsze punkty. Informacja o 33% nie dotyczy wszystkich oznaczeń tej mapy.</p>':'<p class="dbd-rpd-probability">Każde z trzech oznaczonych miejsc: około <b>33% szans</b> na pojawienie się włazu.</p>';
+ const note=wing==='west'&&key==='shack'?'<p class="dbd-rpd-exception">Uwaga: w tym wariancie występują również dwa dodatkowe, rzadsze punkty. Informacja o 20% nie dotyczy wszystkich oznaczeń tej mapy.</p>':'<p class="dbd-rpd-probability">Każde z trzech oznaczonych miejsc: około <b>33% szans</b> na pojawienie się włazu.</p>';
  return `<section class="dbd-hatch-place dbd-rpd-place"><h4>${title} <span>Mapa lokalizacji</span></h4><p class="dbd-rpd-description">${desc}</p><figure class="dbd-hatch-shot dbd-rpd-map"><button type="button" class="dbd-hatch-image-trigger" data-hatch-preview="${src}" data-hatch-caption="${caption}" aria-label="Powiększ mapę: ${caption}"><img src="${src}" loading="lazy" alt="Mapa ${caption} z zaznaczonymi punktami A, B, C${wing==='west'&&key==='shack'?', D, E':''}"></button><figcaption>Kliknij mapę, aby powiększyć</figcaption></figure>${note}</section>`;
  }).join('')}<p class="dbd-rpd-source">Źródło map i oznaczeń: <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3469462028" target="_blank" rel="noopener noreferrer">poradnik społeczności Steam</a>.</p>`;
 }
@@ -92,7 +92,7 @@ function hatchGuide(){
  <label class="dbd-hatch-search-label" for="dbd-hatch-search">Szybko znajdź mapę</label><input id="dbd-hatch-search" class="dbd-hatch-search" type="search" placeholder="Np. Greenville, Coldwind, Ormond, Midwich…" autocomplete="off">
  <div class="dbd-hatch-layout"><aside class="dbd-hatch-realms" aria-label="Krainy"></aside><div class="dbd-hatch-main"><div class="dbd-hatch-map-tabs" aria-label="Warianty map"></div><div class="dbd-hatch-results" aria-live="polite"></div></div></div>
  <div class="dbd-hatch-lightbox" role="dialog" aria-modal="true" aria-label="Podgląd zdjęcia Hatcha" hidden><button type="button" class="dbd-hatch-lightbox-close" aria-label="Zamknij podgląd">×</button><button type="button" class="dbd-hatch-lightbox-prev" aria-label="Poprzednie zdjęcie">‹</button><div class="dbd-hatch-lightbox-frame"><img class="dbd-hatch-lightbox-img" alt=""><div class="dbd-hatch-lightbox-caption"></div></div><button type="button" class="dbd-hatch-lightbox-next" aria-label="Następne zdjęcie">›</button></div>
- <p class="dbd-hatch-source">Źródło zdjęć i lokalizacji: <a href="https://yekpeak.com/dead-by-daylight-all-hatch-spawn-locations/" target="_blank" rel="noopener noreferrer">Yekpeak — All Hatch Spawn Locations (2026)</a>. Zdjęcia są wyświetlane z witryny autora, bez zapisywania ich w repozytorium.</p></div>`;
+ <p class="dbd-hatch-source">Źródło: <a href="https://hens333.com/callouts" target="_blank" rel="noopener noreferrer">https://hens333.com/callouts</a></p></div>`;
 }
 function initHatchGuide(root){
  const tool=root.querySelector('.dbd-hatch-tool');if(!tool||tool.dataset.ready)return;tool.dataset.ready='1';
@@ -131,7 +131,7 @@ function calloutGuide(){return `<div class="dbd-callouts-v2">
 
 <label class="dbd-callout-label" for="dbd-callout-search">Szukaj krainy lub mapy</label><input id="dbd-callout-search" class="dbd-hatch-search" type="search" autocomplete="off" placeholder="Np. Raccoon, East Wing, Coldwind, Greenville…">
 <div class="dbd-hatch-layout"><aside class="dbd-hatch-realms dbd-callout-realms" aria-label="Krainy"></aside><div class="dbd-hatch-main"><div class="dbd-hatch-map-tabs dbd-callout-map-tabs" aria-label="Mapy w krainie"></div><div class="dbd-callout-current" aria-live="polite"></div></div></div>
-<p class="dbd-hatch-source">Źródło atlasu: <a href="https://hens333.com/callouts" target="_blank" rel="noopener noreferrer">Hens’ Callouts</a> — ilustracje Lethii. Wyświetlane są oryginalne mapy z zachowanymi oznaczeniami i animacją Midwich.</p></div>`}
+<p class="dbd-hatch-source">Źródło: <a href="https://hens333.com/callouts" target="_blank" rel="noopener noreferrer">https://hens333.com/callouts</a></p></div>`}
 function initCalloutGuide(root){
  const tool=root.querySelector('.dbd-callouts-v2');if(!tool||tool.dataset.ready)return;tool.dataset.ready='1';
  const realmEl=tool.querySelector('.dbd-callout-realms'),tabs=tool.querySelector('.dbd-callout-map-tabs'),current=tool.querySelector('.dbd-callout-current'),search=tool.querySelector('#dbd-callout-search');
