@@ -238,6 +238,24 @@ function showCategory(id){
  else {menu.scrollIntoView({block:'start',behavior:'smooth'});}
 }
 back.addEventListener('click',()=>showCategory(null));
+// Nawigacja globalna: ponowne kliknięcie Poradniki > Dead by Daylight
+// zawsze przywraca ekran wszystkich kategorii, także gdy hash się nie zmienia.
+window.MattDBDGuide=window.MattDBDGuide||{};
+window.MattDBDGuide.goHome=()=>{
+  showCategory(null);
+  guideRoot.scrollIntoView({block:'start',behavior:'smooth'});
+};
+if(!window.MattDBDGuideNavBound){
+  document.addEventListener('click',event=>{
+    const link=event.target.closest('a[href="#/guides/dbd"]');
+    if(!link || event.defaultPrevented || event.button!==0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey)return;
+    if(window.location.hash==='#/guides/dbd' && typeof window.MattDBDGuide?.goHome==='function'){
+      window.MattDBDGuide.goHome();
+    }
+  });
+  window.MattDBDGuideNavBound=true;
+}
+
 guideRoot.addEventListener('click',event=>{
  const btn=event.target.closest('[data-rs-full]');if(!btn)return;
  const overlay=document.createElement('div');overlay.className='dbd-rs-lightbox';overlay.setAttribute('role','dialog');overlay.setAttribute('aria-modal','true');overlay.setAttribute('aria-label','Podgląd zrzutu ekranu');
@@ -256,5 +274,5 @@ const requested=window.location.hash.match(/dbd-(?:addons|perks|reshade|nightlig
 if(requested){const found=categories.find(category=>category.sections.includes(requested));if(found){showCategory(found.id);if(found.id==='software'||found.id==='trivia')setSubTab(found.id,requested)}}
 
 }
-window.MattDBDGuide={render};
+window.MattDBDGuide={...window.MattDBDGuide,render};
 })();
