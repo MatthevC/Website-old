@@ -92,7 +92,7 @@ function hatchGuide(){
  <label class="dbd-hatch-search-label" for="dbd-hatch-search">Szybko znajdź mapę</label><input id="dbd-hatch-search" class="dbd-hatch-search" type="search" placeholder="Np. Greenville, Coldwind, Ormond, Midwich…" autocomplete="off">
  <div class="dbd-hatch-layout"><aside class="dbd-hatch-realms" aria-label="Krainy"></aside><div class="dbd-hatch-main"><div class="dbd-hatch-map-tabs" aria-label="Warianty map"></div><div class="dbd-hatch-results" aria-live="polite"></div></div></div>
  <div class="dbd-hatch-lightbox" role="dialog" aria-modal="true" aria-label="Podgląd zdjęcia Hatcha" hidden><button type="button" class="dbd-hatch-lightbox-close" aria-label="Zamknij podgląd">×</button><button type="button" class="dbd-hatch-lightbox-prev" aria-label="Poprzednie zdjęcie">‹</button><div class="dbd-hatch-lightbox-frame"><img class="dbd-hatch-lightbox-img" alt=""><div class="dbd-hatch-lightbox-caption"></div></div><button type="button" class="dbd-hatch-lightbox-next" aria-label="Następne zdjęcie">›</button></div>
- <p class="dbd-hatch-source">Źródło: <a href="https://hens333.com/callouts" target="_blank" rel="noopener noreferrer">https://hens333.com/callouts</a></p></div>`;
+ <p class="dbd-hatch-source">Źródło: <a href="https://yekpeak.com/dead-by-daylight-all-hatch-spawn-locations/" target="_blank" rel="noopener noreferrer">yekpeak</a></p></div>`;
 }
 function initHatchGuide(root){
  const tool=root.querySelector('.dbd-hatch-tool');if(!tool||tool.dataset.ready)return;tool.dataset.ready='1';
@@ -131,7 +131,7 @@ function calloutGuide(){return `<div class="dbd-callouts-v2">
 
 <label class="dbd-callout-label" for="dbd-callout-search">Szukaj krainy lub mapy</label><input id="dbd-callout-search" class="dbd-hatch-search" type="search" autocomplete="off" placeholder="Np. Raccoon, East Wing, Coldwind, Greenville…">
 <div class="dbd-hatch-layout"><aside class="dbd-hatch-realms dbd-callout-realms" aria-label="Krainy"></aside><div class="dbd-hatch-main"><div class="dbd-hatch-map-tabs dbd-callout-map-tabs" aria-label="Mapy w krainie"></div><div class="dbd-callout-current" aria-live="polite"></div></div></div>
-<p class="dbd-hatch-source">Źródło: <a href="https://hens333.com/callouts" target="_blank" rel="noopener noreferrer">https://hens333.com/callouts</a></p></div>`}
+<p class="dbd-hatch-source">Źródło: <a href="https://hens333.com/callouts" target="_blank" rel="noopener noreferrer">hens333.com</a></p></div>`}
 function initCalloutGuide(root){
  const tool=root.querySelector('.dbd-callouts-v2');if(!tool||tool.dataset.ready)return;tool.dataset.ready='1';
  const realmEl=tool.querySelector('.dbd-callout-realms'),tabs=tool.querySelector('.dbd-callout-map-tabs'),current=tool.querySelector('.dbd-callout-current'),search=tool.querySelector('#dbd-callout-search');
