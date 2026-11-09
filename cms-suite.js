@@ -643,7 +643,7 @@
         <label><span>Status</span><select data-inbox-filter>${statuses.map(([k,n])=>option(k,n)).join('')}</select></label>
         <label class="matt-inbox-compact-search"><span>Wyszukaj</span><input type="search" data-inbox-search placeholder="Nick, temat, numer, treść..."></label>
       </div>
-      <div class="matt-inbox-compact-summary"><span data-inbox-count></span><span class="matt-inbox-compact-new">${rows.filter(x=>x.status==='new').length} nowych</span><span class="matt-inbox-compact-hint">Kliknij wiersz, aby rozwinąć szczegóły</span></div>
+      <div class="matt-inbox-compact-summary"><span data-inbox-count></span><span class="matt-inbox-compact-new">${rows.filter(x=>x.status==='new').length} nowych</span><span class="matt-inbox-compact-hint">Kliknij wiersz, aby wyświetlić szczegóły</span></div>
       <div class="matt-inbox-compact-list" data-inbox-list></div>
     </section>`;
     const list=$('[data-inbox-list]',body);

@@ -866,7 +866,7 @@ function eventRulesPage() {
             <div class="rule-card-top"><div class="rule-card-number">01</div><div class="rule-card-icon" aria-hidden="true">👤</div></div>
             <div class="rule-card-label">UCZCIWY UDZIAŁ</div>
             <h2>Jedna osoba = jedno konto</h2>
-            <p>Zakazane jest tworzenie nowych kont widmo oraz multikont w celu zwiększenia swoich szans. Wykrycie takiego działania przez bota może skutkować <strong>stałym wykluczeniem z przyszłych rozdań</strong>.</p>
+            <p>Zabronione jest tworzenie fikcyjnych kont oraz korzystanie z wielu kont w celu zwiększenia swoich szans. Wykrycie takiego działania przez bota może skutkować <strong>stałym wykluczeniem z przyszłych rozdań</strong>.</p>
           </section>
 
           <section class="rule-card" id="event-rule-reward">
@@ -1579,7 +1579,7 @@ function bingoPage() {
                 <div class="bingo-win-copy">
                   <p>Aby wygrać daną rozgrywkę, musisz <strong>przed innymi</strong> zaznaczyć 5 kulek w jednej linii:</p>
                   <div class="bingo-win-tags"><span>POZIOMO</span><span>PIONOWO</span><span>NA SKOS</span></div>
-                  <div class="bingo-extra-card"><strong>Chcesz grać dalej?</strong><p>Po wygranej możesz zdobywać kolejne punkty rankingu. Wykup następną planszę za Bitsy przyciskiem <strong>+ Extra Card</strong>.</p></div>
+                  <div class="bingo-extra-card"><strong>Chcesz grać dalej?</strong><p>Po wygranej możesz zdobywać kolejne punkty rankingu. Wykup następną planszę za Bitsy za pomocą przycisku <strong>+ Extra Card</strong>.</p></div>
                 </div>
               </div>
             </section>

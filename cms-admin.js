@@ -3319,7 +3319,7 @@
             }
             result?.classList.toggle('is-ready', !!url);
             if (titleEl) titleEl.textContent = url ? `Avatar @${login}` : 'Brak pobranego avatara';
-            if (statusEl) statusEl.textContent = message || (url ? 'Avatar zostanie zapisany razem z użytkownikiem.' : 'Wpisz nick i pobierz avatar.');
+            if (statusEl) statusEl.textContent = message || (url ? 'Awatar zostanie zapisany razem z użytkownikiem.' : 'Wpisz nick i pobierz awatar.');
             updateLive();
           };
 
@@ -3407,7 +3407,7 @@
           {name:'status',label:'Status / opis'},
           {name:'kind',label:'Typ użytkownika',type:'select',options:[{value:'viewer',label:'Widz'},{value:'vip',label:'VIP'},{value:'moderator',label:'Moderator'},{value:'streamer',label:'Streamer'}]},
           {name:'initial',label:'Litera avatara',help:'Używana tylko wtedy, gdy nie podasz nicku Twitch.'},
-          {name:'twitchLogin',label:'Nick z Twitcha (opcjonalnie)',placeholder:'np. wazzzupek',help:'Wpisz sam nick, bez twitch.tv. Avatar zostanie pobrany z Twitcha, a kliknięcie użytkownika otworzy jego kanał w nowej karcie. Po najechaniu pokaże się dymek z adresem kanału.'}
+          {name:'twitchLogin',label:'Nazwa użytkownika na Twitchu (opcjonalnie)',placeholder:'np. wazzzupek',help:'Wpisz sam nick, bez twitch.tv. Awatar zostanie pobrany z Twitcha, a kliknięcie użytkownika otworzy jego kanał w nowej karcie. Po najechaniu pokaże się dymek z adresem kanału.'}
         ];
         const prepareMember=(v,strict=false)=>{
           const next={...cur,...v};
@@ -3620,7 +3620,7 @@
       const item=getBaseItems().find(x=>x.id===id); if(!item) return draw();
       const raw=overrides[id];
       const current=typeof raw==='string'?raw:(raw?.html || item.html);
-      openModal('EDYTUJ KOMUNIKAT Z GITHUBA', `<div class="cms-manager-actions"><p>Kliknij w treść poniżej i edytuj ją wizualnie. Ten element nadal zachowa swój obecny wygląd i położenie na podstronie.</p></div>
+      openModal('EDYTUJ KOMUNIKAT Z GITHUBA', `<div class="cms-manager-actions"><p>Kliknij poniższą treść, aby edytować ją wizualnie. Ten element nadal zachowa swój obecny wygląd i położenie na podstronie.</p></div>
         <div class="cms-rich-callout-editor" contenteditable="true" spellcheck="true" data-rich-editor>${current}</div>
         <div class="cms-form-actions"><button type="button" data-back>← WRÓĆ</button><button type="button" data-base>↶ TREŚĆ Z GITHUBA</button><button class="cms-primary" type="button" data-save>ZAPISZ</button></div>`);
       const body=$('#cms-modal-body',modal), editor=$('[data-rich-editor]',body);

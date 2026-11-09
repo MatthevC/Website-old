@@ -221,8 +221,8 @@
 <script src="studio-visual.js?v=51"></script>
 <script src="rewards-supabase.js?v=6-opt"></script>
 <link rel="stylesheet" href="dbd.css?v=rpd-hatch-20261109">
-<script src="dbd.js?v=source-labels-20261109"></script>
-<script src="app.js?v=105"></script>
+<script src="dbd.js?v=proofread-20261109"></script>
+<script src="app.js?v=106-proofread"></script>
 <script src="auth-ui.js?v=35"></script>
 <script src="lobby-config.js?v=1"></script>
 <script src="lobby-panel.js?v=7"></script>
@@ -233,7 +233,7 @@
     const role = event?.detail?.role || window.currentUserRole || 'guest';
     if (loaded || (role !== 'admin' && role !== 'moderator')) return;
     loaded = true;
-    ['cms-admin.js?v=39-events','cms-suite.js?v=lobby-only-20261103'].forEach(function(src){
+    ['cms-admin.js?v=40-proofread','cms-suite.js?v=proofread-20261109'].forEach(function(src){
       const script = document.createElement('script');
       script.src = src;
       script.defer = true;
