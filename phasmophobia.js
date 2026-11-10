@@ -19,10 +19,14 @@ function drawMaps(root){const list=root.querySelector('.ph-map-list'),main=root.
 main.innerHTML=`<div class="ph-map-heading"><small>PHASMOPHOBIA / LOKALIZACJE</small><h3>${esc(map.name)}</h3><p>Wybierz przedmiot i przeczytaj wskazówkę, gdzie można go znaleźć.</p></div>
 <style>
 /* Phasmophobia: compact overview plans */
+.ph-map-version{width:210px;max-width:calc(50% - 6px);flex:0 1 210px;background:#1c1c1c;border:1px solid #393939;border-radius:8px;overflow:hidden}
+.ph-map-version-title{text-align:center;color:#fff;font-size:13px;font-weight:800;letter-spacing:.08em;padding:9px 8px;border-bottom:1px solid #393939}
+.ph-plans .ph-map-version .ph-image-button{display:block;width:100%;max-width:none;border:0;border-radius:0}
+@media(max-width:600px){.ph-map-version{width:calc(50% - 6px);flex-basis:calc(50% - 6px)}}
 .ph-plans .ph-image-button{width:210px;max-width:calc(50% - 6px);flex:0 1 210px;overflow:hidden;border-radius:8px}
 .ph-plans .ph-image-button img{width:100%;height:145px;object-fit:contain;background:#0c0c0c}
 @media(max-width:600px){.ph-plans .ph-image-button{width:calc(50% - 6px);flex-basis:calc(50% - 6px)}}
-</style><section class="ph-plans" style="margin:16px 0 20px;padding:16px;border:1px solid #383838;border-radius:10px;background:#151515"><h4 style="margin:0 0 12px">Plany mapy</h4><div style="display:flex;flex-wrap:wrap;gap:12px">${(phAtlasPlans[maps.findIndex(m=>m.name===map.name)]||[]).map((file,i)=>phImage(file,map.name==='Maple Lodge Campsite'?`Maple Lodge Campsite — ${i===0?'OLD':'NEW'}`:`Plan mapy ${map.name} — ${i+1}`,'ph-plan')).join('')}</div>${map.name==='Maple Lodge Campsite'?'<p style="margin:10px 0 0;color:#ddd;font-size:13px">Pierwsza mapa: <strong>OLD</strong> (stara wersja) · Druga mapa: <strong>NEW</strong> (nowa, jaśniejsza wersja).</p>':''}<p style="margin:10px 0 0;color:#aaa;font-size:12px">Kliknij plan, aby powiększyć.</p></section>
+</style><section class="ph-plans" style="margin:16px 0 20px;padding:16px;border:1px solid #383838;border-radius:10px;background:#151515"><h4 style="margin:0 0 12px">Plany mapy</h4><div style="display:flex;flex-wrap:wrap;gap:12px">${(phAtlasPlans[maps.findIndex(m=>m.name===map.name)]||[]).map((file,i)=>map.name==='Maple Lodge Campsite'?`<div class="ph-map-version"><div class="ph-map-version-title">${i===0?'OLD':'NEW'}</div>${phImage(file,`Maple Lodge Campsite — ${i===0?'OLD':'NEW'}`,'ph-plan')}</div>`:phImage(file,`Plan mapy ${map.name} — ${i+1}`,'ph-plan')).join('')}</div><p style="margin:10px 0 0;color:#aaa;font-size:12px">Kliknij plan, aby powiększyć.</p></section>
 <div class="ph-item-grid">${items.map((n,i)=>`<button data-ph-item="${i}" class="ph-item ${selectedItem===i?'active':''}"><span class="ph-item-icon">${icons[i]}</span><span>${n}</span></button>`).join('')}</div>
 <div class="ph-locations">${items.map((n,i)=>`<article class="ph-location ${selectedItem===i?'active':''}" id="ph-item-${i}"><div class="ph-location-symbol">${icons[i]}</div><div class="ph-location-body"><strong>${n}</strong><p>${esc(map.locations[i])}</p></div></article>`).join('')}</div>
 `}
