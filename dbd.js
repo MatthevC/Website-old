@@ -129,7 +129,7 @@ const calloutLocalImages={"Azarov’s Resting Place":{"simple":"maps/Azarovs Res
 function calloutGuide(){return `<div class="dbd-callouts-v2">
 <div class="dbd-callout-explain"><h3>Jak działa system zegarowy?</h3><p>Na planie mapy znajdziesz godziny od <strong>1 do 12</strong>. Wybierz krainę i mapę, aby szybko sprawdzić, gdzie znajduje się dany punkt. Możesz powiedzieć drużynie np. „Killer na 3, obok M”.</p><div class="dbd-callout-legend"><span><b>M</b> Main — główny budynek</span><span><b>S</b> Shack — chatka killera</span><span><b>1–12</b> kierunki na planie</span></div><p>Ustalcie przed meczem wspólną orientację mapy. Rzeczywisty układ niektórych elementów może się różnić między rozgrywkami.</p></div>
 
-<label class="dbd-callout-label" for="dbd-callout-search">Szukaj krainy lub mapy</label><input id="dbd-callout-search" class="dbd-hatch-search" type="search" autocomplete="off" placeholder="Np. Raccoon, East Wing, Coldwind, Greenville…">
+<label class="dbd-callout-label" for="dbd-callout-search">Szukaj mapy</label><input id="dbd-callout-search" class="dbd-hatch-search" type="search" autocomplete="off" placeholder="Np. Raccoon, East Wing, Coldwind, Greenville…">
 <div class="dbd-hatch-layout"><aside class="dbd-hatch-realms dbd-callout-realms" aria-label="Krainy"></aside><div class="dbd-hatch-main"><div class="dbd-hatch-map-tabs dbd-callout-map-tabs" aria-label="Mapy w krainie"></div><div class="dbd-callout-current" aria-live="polite"></div></div></div>
 <p class="dbd-hatch-source">Źródło: <a href="https://hens333.com/callouts" target="_blank" rel="noopener noreferrer">hens333.com</a></p></div>`}
 function initCalloutGuide(root){
