@@ -290,3 +290,8 @@ body.dbd-hatch-modal-open{overflow:hidden}
 .dbd-rs-index{background:#2a1719!important;border-color:#b82e39!important;color:#ff666d!important}
 .dbd-nostromo-code span{background:#252525!important;border-color:#a72d36!important;color:#ff555e!important}
 .dbd-guide a:focus-visible,.dbd-guide button:focus-visible{outline-color:#ed3842}
+
+/* Hatch: angielska nazwa mapy oraz polskie tłumaczenie */
+.dbd-hatch-map-tabs button .dbd-hatch-name-en,.dbd-hatch-result-heading .dbd-hatch-name-en{display:block}
+.dbd-hatch-map-tabs button .dbd-hatch-name-pl,.dbd-hatch-result-heading .dbd-hatch-name-pl{display:block;font-size:.76em;line-height:1.35;font-weight:400;opacity:.72;margin-top:4px;text-transform:none}
+.dbd-hatch-map-tabs button .dbd-hatch-name-pl{white-space:normal}
