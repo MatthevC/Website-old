@@ -1,53 +1,17 @@
-document.addEventListener("DOMContentLoaded", () => {
-
-const btn = document.getElementById("loginBtn");
-
-btn.addEventListener("click", async () => {
-
-const nick = document.getElementById("nick").value.trim();
-const password = document.getElementById("pass").value;
-const msg = document.getElementById("msg");
-
-msg.textContent = "Logowanie...";
-
-try {
-
-const {data: profile, error: profileError} =
-await supabaseClient
-.from("profiles")
-.select("email,role")
-.eq("username", nick)
-.single();
-
-if(profileError || !profile){
-    msg.textContent = "Nie znaleziono użytkownika";
-    return;
-}
-
-const {error} =
-await supabaseClient.auth.signInWithPassword({
-    email: profile.email,
-    password: password
-});
-
-if(error){
-    msg.textContent = "Błędne hasło";
-    return;
-}
-
-if(profile.role !== "admin"){
-    await supabaseClient.auth.signOut();
-    msg.textContent = "Brak uprawnień";
-    return;
-}
-
-window.location.href="../index.html";
-
-} catch(e) {
-    console.error(e);
-    msg.textContent="Błąd logowania";
-}
-
-});
-
+document.addEventListener('DOMContentLoaded', () => {
+ const btn=document.getElementById('loginBtn'), field=document.getElementById('nick'), pass=document.getElementById('pass'), msg=document.getElementById('msg');
+ btn.addEventListener('click',async()=>{
+  const email=field.value.trim();
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){msg.textContent='Wpisz e-mail konta Firebase.';return;}
+  msg.textContent='Logowanie...';btn.disabled=true;
+  try{
+   const result=await supabaseClient.auth.signInWithPassword({email,password:pass.value});
+   pass.value='';if(result.error)throw new Error(result.error.message);
+   const {data:{session}}=await supabaseClient.auth.getSession();
+   const profile=await supabaseClient.from('profiles').select('role').eq('id',session.user.id).maybeSingle();
+   if(profile.error||profile.data?.role!=='admin'){await supabaseClient.auth.signOut();throw new Error('Brak uprawnień administratora.');}
+   location.href='../index.html';
+  }catch(e){msg.textContent=e.message||'Błąd logowania.';}finally{btn.disabled=false;}
+ });
+ [field,pass].forEach(el=>el.addEventListener('keydown',e=>{if(e.key==='Enter')btn.click();}));
 });
