@@ -651,28 +651,9 @@ function mattSetHeaderUser(profile) {
 async function mattGetOwnProfile(session) {
   if (!session?.user) return null;
 
-  // Najpierw po auth_user_id (nowa wersja profilu), potem kompatybilność ze starszymi rekordami po e-mailu.
-  let result = await supabaseClient
-    .from("profiles")
-    .select("username,email,role,avatar_url,avatar_path,auth_user_id,must_complete_account")
-    .eq("auth_user_id", session.user.id)
-    .maybeSingle();
-
-  if (result.error && /auth_user_id|avatar_/i.test(result.error.message || "")) {
-    // Czytelny komunikat pojawi się w edycji profilu; tutaj zachowujemy działanie starego logowania.
-    result = await supabaseClient
-      .from("profiles")
-      .select("username,email,role,must_complete_account")
-      .eq("email", session.user.email)
-      .maybeSingle();
-  } else if (!result.data) {
-    result = await supabaseClient
-      .from("profiles")
-      .select("username,email,role,avatar_url,avatar_path,auth_user_id,must_complete_account")
-      .eq("email", session.user.email)
-      .maybeSingle();
-  }
-
+  const result = await supabaseClient.from("profiles")
+    .select("id,username,email,role,avatar_url,avatar_path,auth_user_id,must_complete_account")
+    .eq("id", session.user.id).maybeSingle();
   if (result.error) throw result.error;
   return result.data;
 }
@@ -1618,23 +1599,19 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (btn) {
     btn.onclick = async () => {
       msg.textContent = "Logowanie...";
-      const { data: p, error: lookupError } = await supabaseClient
-        .from("profiles")
-        .select("email")
-        .ilike("username", nick.value.trim())
-        .maybeSingle();
-
-      if (lookupError || !p) {
-        msg.textContent = "Nie znaleziono użytkownika";
+      // Firebase Auth używa e-maila. Nie odczytujemy prywatnych profili przed zalogowaniem.
+      const email = nick.value.trim();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        msg.textContent = "Wpisz adres e-mail konta Firebase (logowanie nickiem wymaga osobnego, bezpiecznego mapowania).";
         return;
       }
 
       const { error } = await supabaseClient.auth.signInWithPassword({
-        email: p.email,
+        email,
         password: pass.value
       });
       if (error) {
-        msg.textContent = "Błędne hasło";
+        msg.textContent = "Nie udało się zalogować. Sprawdź e-mail i hasło Firebase.";
         return;
       }
       location.reload();

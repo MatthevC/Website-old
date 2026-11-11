@@ -35,8 +35,8 @@ class Query {
    // Prefer document lookup for key-based CMS and game configuration, minimizing reads.
    const idField=this.table==='cms_data'?'key':this.table==='matt_lobby_game_config'?'game':'id';
    const key=this.filters.length===1&&this.filters[0][0]===idField&&this.filters[0][1]==='=='?this.filters[0][2]:null;
-   if(key!==null){const one=await f.getDoc(f.doc(db,table,String(key)));rows=one.exists()?[normalize(one.data())]:[];}
-   else {snap=await f.getDocs(f.query(col,...constraints));rows=snap.docs.map(x=>normalize(x.data()));}
+   if(key!==null){const one=await f.getDoc(f.doc(db,table,String(key)));rows=one.exists()?[{...normalize(one.data()),[idField]:String(key),id:one.id}]:[];}
+   else {snap=await f.getDocs(f.query(col,...constraints));rows=snap.docs.map(x=>({...normalize(x.data()),[idField]:x.data()?.[idField]??x.id,id:x.data()?.id??x.id}));}
    if(this.opts.head)return {data:null,count:rows.length,error:null};
    if(this.fields&&this.fields!=='*'){const keys=this.fields.split(',').map(x=>x.trim());rows=rows.map(r=>Object.fromEntries(keys.filter(k=>k in r).map(k=>[k,r[k]])));}
    return {data:this.singleMode?rows[0]||null:rows,error:this.singleMode==='single'&&!rows.length?{message:'Nie znaleziono dokumentu'}:null,count:rows.length};
@@ -61,6 +61,8 @@ const authApi={
  async getSession(){await ready;const user=auth.currentUser;return {data:{session:user?{user:{id:user.uid,email:user.email,app_metadata:{},user_metadata:{}},access_token:await user.getIdToken(),expires_at:Math.floor(Date.now()/1000)+3600}:null},error:null};},
  async getUser(){await ready;const user=auth.currentUser;return {data:{user:user?{id:user.uid,email:user.email}:null},error:null};},
  async signInWithPassword({email,password}){try{await ready;const r=await sdk.u.signInWithEmailAndPassword(auth,email,password);return {data:{user:{id:r.user.uid,email:r.user.email},session:{user:{id:r.user.uid,email:r.user.email}}},error:null};}catch(e){return fail(e.message);}},
+ async resetPasswordForEmail(email){try{await ready;await sdk.u.sendPasswordResetEmail(auth,email);return {data:{},error:null};}catch(e){return fail(e.message);}},
+ async updateUser(changes){try{await ready;const user=auth.currentUser;if(!user)return fail('Brak zalogowanego użytkownika.');if(changes.password)await sdk.u.updatePassword(user,changes.password);if(changes.email)await sdk.u.updateEmail(user,changes.email);return {data:{user:{id:user.uid,email:user.email}},error:null};}catch(e){return fail(e.message);}},
  async signOut(){try{await ready;await sdk.u.signOut(auth);return {error:null};}catch(e){return fail(e.message);}},
  onAuthStateChange(cb){let unsub=()=>{};ready.then(()=>{unsub=sdk.u.onAuthStateChanged(auth,user=>cb(user?'SIGNED_IN':'SIGNED_OUT',user?{user:{id:user.uid,email:user.email}}:null));});return {data:{subscription:{unsubscribe:()=>unsub()}}};}
 };
